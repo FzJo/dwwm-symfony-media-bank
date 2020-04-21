@@ -279,9 +279,3 @@ All templates can declare blocks, it's a placement where child templates can ins
 
 
 
-
-
-
-
-
-
