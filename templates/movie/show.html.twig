@@ -1,19 +1,51 @@
+{% extends '_navbar.html.twig' %}
 
-{% block title %}Hello MovieController!{% endblock %}
+{% block title %}Movie{% endblock %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/jofz/Desktop/symfony/dwwm-symfony/media-bank/src/Controller/MovieController.php'|file_link(0) }}">src/Controller/MovieController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/jofz/Desktop/symfony/dwwm-symfony/media-bank/templates/movie/index.html.twig'|file_link(0) }}">templates/movie/index.html.twig</a></code></li>
-    </ul>
-</div>
+{% block main %}
+    <h1>Movie Section</h1>
+    <!--Movie-->
+    <div class="container">
+        <div class="row">
+            <div class="cover col-5 col-lg-3 m-0 p-0"
+                 style="height: 70vh;">
+                <img src="{{ movie.poster }}" class="card-img-top"
+                     alt="Movie Poster" style="width: fit-content"/>
+            </div>
+            <div class="col-6 col-lg-8">
+                <h2>{{ movie.title }}</h2>
+                <!--Description-->
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-text">{{ movie.director }}</p>
+                            <p class="card-text">{{ movie.actors }}</p>
+                            <p class="card-text">{{ movie.year }}</p>
+                            <p class="card-text">{{ movie.runtime }}</p>
+                            <p class="card-text">{{ movie.genre }}</p>
+                            <p class="card-text">{{ movie.plot }}</p>
+                        </div>
+                        <!--Comment aera-->
+                        <form method="post" action="">
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1">Add your comment here</label>
+                                <textarea name="comment" class="form-control" id="exampleFormControlTextarea1"
+                                          rows="3"></textarea>
+                                <?php if ($commentForm->getError()["comment"]) { ?>
+                                <div class="alert alert-danger" role="alert">
+                                    <?php echo $commentForm->getError()["comment"] ?>
+                                </div>
+                                <?php } ?>
+                            </div>
+                            <button type="submit" class="btn">Submit</button>
+                        </form>
+                        <!--Footer-->
+                    </div>
+                    <div class="card-footer text-muted">
+                        Rated by LaTeam2020© : <?php echo $movie->getRate() ?> *****
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

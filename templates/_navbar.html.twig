@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+
 {% block navbar %}
 
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -11,20 +12,20 @@
         <div class="collapse navbar-collapse" id="userMenu">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="btn nav-link" href="/movies">Movies</a>
+                    <a class="btn nav-link" href="{{ path('movies') }}">Movies</a>
                 </li>
                 <li class="nav-item">
                     <a class="btn nav-link" href="#">Login</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown link
+                        Genres
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="movies/action">Action</a>
-                        <a class="dropdown-item" href="movies/horror">Horror</a>
-                        <a class="dropdown-item" href="movies/sci-fi">Sci-Fi</a>
-                        <a class="dropdown-item" href="movies/comedy">Comedy</a>
+                        <a class="dropdown-item" href="{{ path('movies', { 'id': 'genre'}) }}">Action</a>
+                        <a class="dropdown-item" href="{{ path('movies', { 'id': 'genre'}) }}">Horror</a>
+                        <a class="dropdown-item" href="{{ path('movies', { 'id': 'genre'}) }}">Sci-Fi</a>
+                        <a class="dropdown-item" href="{{ path('movies', { 'id': 'genre'}) }}">Comedy</a>
                     </div>
                 </li>
             </ul>
